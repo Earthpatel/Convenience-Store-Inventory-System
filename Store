@@ -1,0 +1,403 @@
+#include <iostream>
+using namespace std;
+
+int success = 0;
+int failure = 0;
+void Rate(int r)                                        //Tallies the number of successful and failed transactions
+{
+
+    if (r == 0)
+          failure++;
+    else  
+          success++;
+  
+}
+
+class store
+{
+  private:
+    int code;
+    string category;
+    string name;
+    string brand;
+    double price;
+    int stock;
+
+    void updatePrice()                                    //updates price
+    {
+      cout<<"\nEnter a New Price: ";
+      cin>>price;
+      cout<<endl;
+    }
+  
+    void updateStock()                                    //updates stock
+    {
+      cout<<"\nEnter New Stock: ";
+      cin>>stock;
+      cout<<endl;
+    }
+  public:
+    store(int c, string cc, string n, string b, double p, int s)          //constructor
+    {
+      code = c;
+      category = cc;
+      name = n;
+      brand = b;
+      price = p;
+      stock = s;
+    }
+    store(string x, string y)                                   //constructor
+    {
+      brand = x;
+      name = y;
+    }
+
+    int search(store x)                                       //searching the item in the store
+    {
+      if(brand == x.brand&&name==x.name)
+          return 1;
+      else
+          return 0;
+    }
+
+    void numberofitems()                                   //checks the number of items and calculates the total
+    {
+      int j;
+      cout<<"\n Item Details: "<<endl;
+      showdetail();
+      cout<<"How many of this item would you like to purchase? ";
+      cin>>j;
+      if(j > stock)
+      {
+        cout<<"We do not have the requested number of this item"<<endl;
+        Rate(0);
+      }
+      else
+      {
+        cout<<"Total cost of the item(s): "<<j*price<<endl;
+        stock = stock - j;
+        cout<<"\nRemaining stock: "<<stock<<endl;
+        Rate(1);
+      }
+     }
+
+    void showdetail()                              //display item details
+    {
+        cout<<"Barcode: "<<code<<endl;
+        cout<<"Category: "<<category<<endl;
+        cout<<"Name: "<<name<<endl;
+        cout<<"Brand: "<<brand<<endl;
+        cout<<"Price: "<<price<<endl;
+        cout<<"Stock: "<<stock<<endl;
+        cout<<endl;
+    }
+
+    void update()                                 //update price and stock
+    {
+        int x;
+        cout<<"What would you like to update?\n1.Price\n2.Stock"<<endl;
+        cin>>x;
+        if(x==1)
+          updatePrice();
+        else 
+          updateStock();
+    }
+};
+    store s1(100,"Snacks", "Potato_Chips","Lays", .75, 50);
+    store s2(101,"Snacks", "Barbecue","Lays", .75, 50);
+    store s3(102,"Snacks", "Dill_Pickle","Lays", 2.29, 10);
+    store s4(103,"Snacks", "Cheddar_and_Sour_Cream","Ruffles", .75, 50);
+    store s5(104,"Snacks", "Jalepeno_Ranch","Ruffles", .75, 50);
+    store s6(105,"Snacks", "Flaming_Hot","Cheetos", .75, 50);
+    store s7(106,"Snacks", "Crunchy_Normal","Cheetos", .79, 50);
+    store s8(107,"Snacks", "Nacho_Cheese","Doritos", .75, 50);
+    store s9(108,"Snacks", "Cool_Ranch","Doritos", .75, 50);
+    store s10(109,"Snacks", "Spicy_Sweet_Chili","Doritos", 2.29, 10);
+    store s11(110, "Tobacco", "Red", "Marlboro", 7.10, 15);
+    store s12(111,"Tobacco", "Special_Select_Gold","Marlboro", 6.15, 25);
+    store s13(112,"Tobacco", "Gold_Menthol_Box","Marlboro", 7.30, 50);
+    store s14(113,"Tobacco", "Silver_72","Marlboro", 6.30, 50);
+    store s15(114,"Tobacco", "Diamond","Game", .75, 50);
+    store s16(115,"Tobacco", "Red Sweet","Game", .75, 50);
+    store s17(116,"Tobacco", "Silver","White Owl", .99, 50);
+    store s18(117,"Tobacco", "Gold_Box","Salem", 8.06, 10);
+    store s19(118,"Tobacco", "Slim_100's_Box","Salem", 8.06, 50);
+    store s20(119,"Tobacco", "Cherry","BLK", .99, 50);
+    store s21(120, "Beverage", "Glacier_Freeze", "Gatorade", 1.99, 10);
+    store s22(121,"Beverage", "Grape","Bootlegger", 1.99, 20);store s23(122,"Beverage", "Apple","Bootlegger", 1.99, 20);
+    store s24(123,"Beverage", "Raspberry","Bootlegger", 1.99, 20);
+    store s25(124,"Beverage", "Sparkling_Orange","Celsius", 2.50, 20);
+    store s26(125,"Beverage", "Orange_Ocean ","Hawaiian Punch", 3.99, 5);
+    store s27(126,"Beverage", "Zero","Coca Cola", 2.10, 20);
+    store s28(127,"Beverage", "Light","Coors", 11.99, 50);
+    store s29(128,"Beverage", "Orange_Juice","Everfresh", 2.25, 25);
+    store s30(129,"Beverage", "Orange","Everfresh", 2.25, 25);
+        
+    
+
+
+void owner()                            //owner options
+{
+  int b,c;
+  while(1){
+  
+  cout<<"Which feature would you like to use? \n1.Show Items in Store\n2.Update The Item\n3.Transaction\n4.Exit"<<endl<<endl;
+    cin>>b;
+    cout<<endl;
+    switch(b)
+    {
+      case 1: cout<<"\nDetails of the Item: "<<endl;
+          s1.showdetail();
+          s2.showdetail();
+          s3.showdetail();
+         s4.showdetail();
+          s5.showdetail();
+          s6.showdetail();
+         s7.showdetail();
+          s8.showdetail();
+          s9.showdetail();
+         s10.showdetail();
+          s11.showdetail();
+         s12.showdetail();
+          s13.showdetail();
+          s14.showdetail();
+         s15.showdetail();
+          s16.showdetail();
+          s17.showdetail();
+         s18.showdetail();
+          s19.showdetail();
+          s20.showdetail();
+         s21.showdetail();
+          s22.showdetail();
+          s23.showdetail();
+         s24.showdetail();
+          s25.showdetail();
+          s26.showdetail();
+          s27.showdetail();
+          s28.showdetail();
+          s29.showdetail();
+          s30.showdetail();
+          break;
+  
+      case 2: cout<<"Stock Update" <<endl;
+              cout<<"Enter the barcode of the item you want to update: ";
+              cin>>c;
+              if(c==100)
+                s1.update();
+              else if(c==101)
+                s2.update();
+              else if(c==102)
+                s3.update();
+              else if(c==103)
+                s4.update();
+              else if(c==104)
+                s5.update();
+              else if(c==105)
+                s6.update();
+              else if(c==106)
+                s7.update();
+              else if(c==107)
+                s8.update();
+              else if(c==108)
+                s9.update();
+              else if(c==109)
+                s10.update();
+              else if(c==110)
+                s11.update();
+              else if(c==111)
+                s12.update();
+              else if(c==112)
+                s13.update();
+              else if(c==113)
+                s14.update();
+              else if(c==114)
+                s15.update();
+              else if(c==115)
+                s16.update();
+              else if(c==116)
+                s17.update();
+              else if(c==117)
+                s18.update();
+              else if(c==118)
+                s19.update();
+              else if(c==119)
+                s20.update();
+              else if(c==120)
+                s21.update();
+              else if(c==121)
+                s22.update();
+              else if(c==122)
+                s23.update();
+              else if(c==123)
+                s24.update();
+              else if(c==124)
+                s25.update();
+              else if(c==125)
+                s26.update();
+              else if(c==126)
+                s27.update();
+              else if(c==127)
+                s28.update();
+              else if(c==128)
+                s29.update();
+              else if(c==129)
+                s30.update();
+              else
+                cout<<"Invalid"<<endl;
+                break;
+  
+      case 3: cout<<"Total failed transaction: "<<failure<<endl;
+              cout<<"Total successful transaction: "<<success<<endl;
+              cout<<endl;
+              break;
+  
+      case 4:
+              return;
+  
+    }
+  }
+}
+
+void customer()                                        //customer options
+{
+  int x;
+  while(1)
+  {
+    cout<<"\nEnter an option \n1.Show Items\n2.Purchase an item\n3.Exit"<<endl;
+    cin>>x;
+    if(x==1)
+    {
+      cout<<"\nItem Details: "<<endl;
+          s1.showdetail();
+          s2.showdetail();
+          s3.showdetail();
+         s4.showdetail();
+          s5.showdetail();
+          s6.showdetail();
+         s7.showdetail();
+          s8.showdetail();
+          s9.showdetail();
+         s10.showdetail();
+          s11.showdetail();
+         s12.showdetail();
+          s13.showdetail();
+          s14.showdetail();
+         s15.showdetail();
+          s16.showdetail();
+          s17.showdetail();
+         s18.showdetail();
+          s19.showdetail();
+          s20.showdetail();
+         s21.showdetail();
+          s22.showdetail();
+          s23.showdetail();
+         s24.showdetail();
+          s25.showdetail();
+          s26.showdetail();
+          s27.showdetail();
+          s28.showdetail();
+          s29.showdetail();
+          s30.showdetail();
+    }
+    else if(x==2)
+    {
+      string a;
+      string b;
+      cout<<"Enter the brand name of the item: ";
+      cin>>a;
+      cout<<"Enter the name of the item: ";
+      cin>>b;
+      store s100(a,b);
+      if(s100.search(s1)==1)
+          s1.numberofitems();
+      else if(s100.search(s2)==1)
+          s2.numberofitems();
+      else if(s100.search(s3)==1)
+          s3.numberofitems();
+      else if(s100.search(s4)==1)
+          s4.numberofitems();
+      else if(s100.search(s5)==1)
+          s5.numberofitems();
+      else if(s100.search(s6)==1)
+          s6.numberofitems();
+      else if(s100.search(s7)==1)
+          s7.numberofitems();
+      else if(s100.search(s8)==1)
+          s8.numberofitems();
+      else if(s100.search(s9)==1)
+          s9.numberofitems();
+      else if(s100.search(s10)==1)
+          s10.numberofitems();
+      else if(s100.search(s11)==1)
+          s11.numberofitems();
+      else if(s100.search(s12)==1)
+          s12.numberofitems();
+      else if(s100.search(s13)==1)
+          s13.numberofitems();
+      else if(s100.search(s14)==1)
+          s14.numberofitems();
+      else if(s100.search(s15)==1)
+          s15.numberofitems();
+      else if(s100.search(s16)==1)
+          s16.numberofitems();
+      else if(s100.search(s17)==1)
+          s17.numberofitems();
+      else if(s100.search(s18)==1)
+          s18.numberofitems();
+      else if(s100.search(s19)==1)
+          s19.numberofitems();
+      else if(s100.search(s20)==1)
+          s20.numberofitems();
+      else if(s100.search(s21)==1)
+          s21.numberofitems();
+      else if(s100.search(s22)==1)
+          s22.numberofitems();
+      else if(s100.search(s23)==1)
+          s23.numberofitems();
+      else if(s100.search(s24)==1)
+          s24.numberofitems();
+      else if(s100.search(s25)==1)
+          s25.numberofitems();
+      else if(s100.search(s26)==1)
+          s26.numberofitems();
+      else if(s100.search(s27)==1)
+          s27.numberofitems();
+      else if(s100.search(s28)==1)
+          s28.numberofitems();
+      else if(s100.search(s29)==1)
+          s29.numberofitems();
+      else if(s100.search(s30)==1)
+          s30.numberofitems();
+      else
+      {
+          cout<<"This item is not available"<<endl;
+          Rate(0);
+      }
+    }
+    else
+      return;
+  }
+}
+
+int main()
+{
+  int a;
+  string aa;
+  while(1)
+  {
+    cout<<"\nWho are you?\n1.Owner\n2.Customer\n3.Exit"<<endl<<endl;
+    cin>>a;
+    cout<<endl;
+    if(a==1){
+      cout<<"Who are you?: \n Rajesh,\n Hina,\n Earth,\n Other,"<<endl<<endl;
+      cin>>aa;
+      cout<<endl;
+      cout<<"Hello "<< aa <<endl;
+      owner();
+    }
+    else if(a==2)
+          customer();
+    else
+      return 0;
+  }
+}
